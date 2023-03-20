@@ -29,7 +29,7 @@ abstract class GeneralRequest<T> {
 }
 
 // Request structure for a single item.
-class SingleRequest<T> extends GeneralRequest<T> {
+export class SingleRequest<T> extends GeneralRequest<T> {
     async get(): Promise<T> {
         const { docs } = await this.fetch();
 
@@ -42,7 +42,7 @@ class SingleRequest<T> extends GeneralRequest<T> {
 }
 
 // Request structure for multiple response items and response manipulation (pagination, filtering and sorting).
-class ExtendedRequest<T> extends GeneralRequest<T> {
+export class ExtendedRequest<T> extends GeneralRequest<T> {
     // Limit response to n number of results
     limit(n: number): Omit<this, "limit"> {
         this.query.set("limit", String(n));

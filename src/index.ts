@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import getAllMovies from "./apiClient";
+import {SingleRequest, ExtendedRequest} from "./apiClient";
 
 /*
  * This is a sdk for an existing Lord of the Rings API.
@@ -16,12 +16,16 @@ export default function initOneSDK(token) {
 
     return {
         // List of all movies.
-        movies: () => getAllMovies(client),
+        movies: () => new ExtendedRequest<Movie>("movie", client),
         
-        // Request one specific movie.
-        movie: (id) => getOneMovie(id, client),
-        
-        // Request all quotes for one specific movie.
-        quote: (id) => getQuote(id, quote, client)
+        // Requests for one specific movie.
+        movie: (id: string) => new class MovieRequest extends SingleRequest<Movie> {
+            constructor() { super(`movie/${id}`, client) }
+
+            // Request for all movie quotes on a movie.
+            quotes() {
+                return new ExtendedRequest<Quote>(this.path + "/quote", client);
+            }
+        }
         }
 }
