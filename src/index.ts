@@ -3,9 +3,7 @@ import axios from "axios";
 import { Movie, Quote } from "../models/models";
 import {SingleRequest, ExtendedRequest} from "./apiClient";
 
-/*
- * This is a sdk wrapper for an existing Lord of the Rings API.
- */
+// This is a sdk wrapper for an existing Lord of the Rings API.
 export default function initOneSDK(token) {
     const client = axios.create({
         baseURL: "https://the-one-api.dev/v2",

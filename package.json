@@ -1,6 +1,6 @@
 {
   "name": "kaseris_anastasios-sdk",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A brief SDK example for accessing some existing API endpoints",
   "main": "src/index.js",
   "type": "module",
