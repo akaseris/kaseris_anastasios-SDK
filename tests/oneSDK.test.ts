@@ -30,7 +30,7 @@ describe("all movies", () => {
     });
 });
 
-// Test group for /movie/{id endpoint}
+// Test group for /movie/{id} endpoint
 describe("one movie by id", () => {
     it("get movie, name check", async () => {
         const movie = await oneSDK.movie("5cd95395de30eff6ebccde5d").get();
@@ -46,10 +46,31 @@ describe("one movie by id", () => {
         expect(movie.budgetInMillions).toBe(94);
     });
 
-    it("get movie, budget check", async () => {
+    it("get movie, awards check", async () => {
         const movie = await oneSDK.movie("5cd95395de30eff6ebccde5d").get();
     
         expect(movie).not.toBeNull();
         expect(movie.academyAwardWins).toBe(11);
+    });
+});
+
+// Test group for /movie/{id}/quote endpoint
+describe("quotes by movie id", () => {
+    it("get movie quotes", async () => {
+        const quotes = await oneSDK.movie("5cd95395de30eff6ebccde5d").quotes().getAll();
+    
+        expect(quotes).toHaveLength(872);
+    });
+
+    it("can get sorted movie quotes", async () => {
+        const quotes = await oneSDK.movie("5cd95395de30eff6ebccde5c").quotes().sort("dialog", "asc").get();
+    
+        expect(quotes[0].dialog).toBe("\"Don't you lose him Samwise Gamgee!\" And I don't mean to.");
+    });
+
+    it("can get limited movie quotes", async () => {
+        const quotes = await oneSDK.movie("5cd95395de30eff6ebccde5c").quotes().limit(8).get();
+    
+        expect(quotes).toHaveLength(8);
     });
 });
