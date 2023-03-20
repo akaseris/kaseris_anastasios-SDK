@@ -49,13 +49,13 @@ export class ExtendedRequest<T> extends GeneralRequest<T> {
         return this;
     }
 
-    //Response page specification
+    // Response page specification
     page(n: number): Omit<this, "page"> {
         this.query.set("page", String(n));
         return this;
     }
 
-    //Offset response items
+    // Offset response items
     offset(n: number): Omit<this, "offset"> {
         this.query.set("offset", String(n));
         return this;
