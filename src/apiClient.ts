@@ -28,6 +28,19 @@ abstract class GeneralRequest<T> {
     }
 }
 
+// Request structure for a single item.
+class SingleRequest<T> extends GeneralRequest<T> {
+    async get(): Promise<T> {
+        const { docs } = await this.fetch();
+
+        if (docs.length == 0) {
+            throw new Error("No items in response");
+        }
+
+        return docs[0];
+    }
+}
+
 // Request structure for multiple response items and response manipulation (pagination, filtering and sorting).
 class ExtendedRequest<T> extends GeneralRequest<T> {
     // Limit response to n number of results
