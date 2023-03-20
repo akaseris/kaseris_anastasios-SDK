@@ -7,6 +7,11 @@ This SDK access [The One API](https://the-one-api.dev) and exports the functiona
 - /movie/{id}/quote
   <br> </br>
 
+## Requirements
+
+- [NodeJS](https://nodejs.org/en/download)
+  <br> </br>
+
 ## Installation
 
 ```shell
