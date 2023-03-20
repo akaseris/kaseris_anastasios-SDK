@@ -28,7 +28,7 @@ you can use it as follows:
 ### Add to your code:
 
 ```js
-import { initOneSDK } from "@akaseris/kaseris_anastasios-sdk";
+import { initOneSDK } from "kaseris_anastasios-sdk";
 
 const oneSDK = initOneSDK("YOUR_TOKEN");
 
