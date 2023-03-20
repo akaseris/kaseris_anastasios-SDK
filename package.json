@@ -1,0 +1,19 @@
+{
+  "name": "kaseris_anastasios-sdk",
+  "version": "1.0.0",
+  "description": "A brief SDK example for accessing some existing API endpoints",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaseris/kaseris_anastasios-SDK.git"
+  },
+  "author": "akaseris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akaseris/kaseris_anastasios-SDK/issues"
+  },
+  "homepage": "https://github.com/akaseris/kaseris_anastasios-SDK#readme"
+}
