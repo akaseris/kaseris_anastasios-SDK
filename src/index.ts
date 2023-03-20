@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import { Movie, Quote } from "../models/models";
 import {SingleRequest, ExtendedRequest} from "./apiClient";
 
 /*
