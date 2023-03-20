@@ -1,22 +1,15 @@
+import apiClient from "./apiClient.js";
+
 /*
  * This is a sdk for an existing Lord of the Rings API.
  *
  */
-(function (window) {
+// declare
+var oneSDK = {};
 
-    // Check for already initialised sdk
-    if (window.oneSDK) {
-        return;
-    }
+// init function
+oneSDK.init = function () {
+    apiClient(process.env.ONE_API_TOKEN);
+};
 
-    // declare
-    var oneSDK = {};
-
-    // init function
-    oneSDK.init = function () {
-        
-    };
-
-    window.lotr = lotr;
-
-})(window, undefined);
+export default oneSDK
