@@ -1,6 +1,12 @@
 import axios from "axios";
 
-export default function apiClient(token) {
+import getAllMovies from "./apiClient";
+
+/*
+ * This is a sdk for an existing Lord of the Rings API.
+ *
+ */
+export default function initOneSDK(token) {
     const client = axios.create({
         baseURL: "https://the-one-api.dev/v2",
         headers: {
@@ -18,19 +24,4 @@ export default function apiClient(token) {
         // Request all quotes for one specific movie.
         quote: (id) => getQuote(id, quote, client)
         }
-}
-
-const getAllMovies = (client) => {
-    return client.get('/movies')
-        .then(function (response) {
-            // handle success
-            console.log(response);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .finally(function () {
-            // always executed
-        });
 }
