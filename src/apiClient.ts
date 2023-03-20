@@ -62,8 +62,8 @@ export class ExtendedRequest<T> extends GeneralRequest<T> {
     }
 
     // Response items sorting based on field and type for ascending or descending
-    sort(field: keyof ItemType<T>, type: "asc" | "desc" = "asc"): Omit<this, "sort"> {
-        this.query.set("sort", `${String(field)}:${type}`);
+    sort(field: keyof ItemType<T>, order: "asc" | "desc" = "asc"): Omit<this, "sort"> {
+        this.query.set("sort", `${String(field)}:${order}`);
         return this;
     }
 
@@ -95,11 +95,11 @@ export class ExtendedRequest<T> extends GeneralRequest<T> {
     }
 
     // Filtering parameters for a field existense or non existense
-    withExists<TField extends keyof ItemType<T>>(field: TField): this {
+    exists<TField extends keyof ItemType<T>>(field: TField): this {
         this.query.set(String(field), "");
         return this;
     }
-    withNotExists<TField extends keyof ItemType<T>>(field: TField): this {
+    notExists<TField extends keyof ItemType<T>>(field: TField): this {
         this.query.set("!" + String(field), "");
         return this;
     }
