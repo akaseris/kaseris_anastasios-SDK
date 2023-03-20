@@ -3,26 +3,26 @@ import initOneSDK from '../src';
 const oneSDK = initOneSDK(process.env.ONE_API_TOKEN)
 
 describe("all movies", () => {
-    it("get movies", async () => {
+    it("get all movies", async () => {
         const movies = await oneSDK.movies().getAll();
     
         expect(movies).toHaveLength(8);
     });
 
-    it("get movies", async () => {
+    it("get movies with offset", async () => {
         const movies = await oneSDK.movies().offset(3).getAll();
     
         expect(movies).toHaveLength(5);
     });
 
-    it("get movies", async () => {
+    it("get movies with sorting", async () => {
         const movies = await oneSDK.movies().sort("name", "asc").getAll();
     
         expect(movies[0]).not.toBeNull();
         expect(movies[0].name).toBe("The Battle of the Five Armies");
     });
 
-    it("get movies", async () => {
+    it("get movies with comparison operator", async () => {
         const movies = await oneSDK.movies().with("budgetInMillions", "<", 200).getAll();
     
         expect(movies).toHaveLength(3);
